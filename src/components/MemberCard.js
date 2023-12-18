@@ -1,7 +1,7 @@
 // components/MemberCard.js
 "use client";
 import React,{useContext} from "react";
-import Context from "../../ContextAPI";
+import Context from "../ContextAPI";
 const MemberCard = ({ member,setmod }) => {
   const context=useContext(Context);
   const { id, photo, name, role, instagram, github } = member;

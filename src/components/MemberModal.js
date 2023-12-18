@@ -2,7 +2,7 @@
 
 import { useContext } from "react";
 import { uid } from "uid";
-import Context from "../../ContextAPI";
+import Context from "../ContextAPI";
 
 export default function Modal({ setmod }) {
   const context = useContext(Context);

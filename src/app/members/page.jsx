@@ -1,8 +1,8 @@
 "use client";
 import React,{useState,useContext} from 'react';
-import MemberCard from '../components/MemberCard';
-import MemberModal from '../components/MemberModal';
-import Context from '../../ContextAPI';
+import Context from '@/ContextAPI';
+import MemberCard from '@/components/MemberCard';
+import MemberModal from '@/components/MemberModal';
 
 function MemberMgmt() {
     const context = useContext(Context);
@@ -19,7 +19,6 @@ function MemberMgmt() {
             Add Member
           </button>
         </div>
-       
         <MemberCard member={faculty} setmod={setmodaler}/> 
         <MemberCard member={head} setmod={setmodaler}/> 
         <div className="grid md:grid-cols-3 flex-row items-center">
