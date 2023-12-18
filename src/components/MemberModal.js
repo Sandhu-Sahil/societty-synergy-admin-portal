@@ -1,6 +1,7 @@
 "use client";
 
 import { useContext } from "react";
+import { uid } from "uid";
 import Context from "../../ContextAPI";
 
 export default function Modal({ setmod }) {
@@ -99,8 +100,9 @@ export default function Modal({ setmod }) {
                   className="bg-green-900 text-white rounded-lg px-4 py-2 font-bold"
                   onClick={() => {
                     if (!currentmem.hasOwnProperty("id")) {
+                      let idd=uid(32);
                       var arr = {
-                        id: 8,
+                        id: idd,
                         name: currentmem.name,
                         role: currentmem.role,
                         github: currentmem.github,
