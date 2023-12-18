@@ -2,7 +2,7 @@ import React from 'react'
 import { toast } from 'react-toastify';
 
 const Login = (props) => {
-    const { creds } = props;
+    const { creds , setloggedin} = props;
     const { email, setemail, pass, setpass, show, setshow } = creds;
     const toastoptions = {
         position: "top-right",
@@ -13,23 +13,23 @@ const Login = (props) => {
     }
     const handlesubmit = async (e) => {
         e.preventDefault();
-        // const response = await fetch('',
+        // const response = await fetch('https://api.society-synergy.nl/api/v1/user/login',
         //     {
         //         method: 'POST',
         //         headers: {
         //             'Content-Type': 'application/json'
         //         },
-        //         body: JSON.stringify({email,pass})
+        //         body: JSON.stringify({email,password:pass})
         //     }
         // )
         // const json = await response.json();
         const json = { success: false, authtoken: 'sampletoken' };
         if (json.success) {
             localStorage.setItem('synergy-token', json.authtoken)
+            setloggedin(true)
             navigate('/');
         }
         else {
-            console.log(creds);
             toast.error('Wrong Credentials', toastoptions)
         }
     }

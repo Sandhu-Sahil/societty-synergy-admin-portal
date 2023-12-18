@@ -1,10 +1,17 @@
 "use client";
-import React,{useState,useContext} from 'react';
+import React,{useState,useContext, useEffect} from 'react';
 import Context from '@/ContextAPI';
 import MemberCard from '@/components/MemberCard';
 import MemberModal from '@/components/MemberModal';
+import { useRouter } from 'next/navigation';
 
 function MemberMgmt() {
+  let router = useRouter();
+  useEffect(() => {
+    // if(!localStorage.getItem('synergy-token')){
+    //   router.push('/login');
+    // }
+  }, [])
     const context = useContext(Context);
     const {faculty,head,members}=context;
     const [modaler, setmodaler] = useState(false);

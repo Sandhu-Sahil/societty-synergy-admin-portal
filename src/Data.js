@@ -70,9 +70,13 @@ const Synergy = ({ children }) => {
     },
   ]);
   const [currentmem, setcurrentmem] = useState({});
+  const [email, setemail] = useState("");
+  const [pass, setpass] = useState("");
+  const [show, setshow] = useState(false);
+  const [loggedin, setloggedin] = useState(true)
   return (
     <Context.Provider
-      value={{ faculty, head, members, setfaculty, sethead, setmembers ,currentmem,setcurrentmem}}
+      value={{ faculty, head, members, setfaculty, sethead, setmembers ,currentmem,setcurrentmem,email,setemail,pass,setpass,show,setshow,loggedin,setloggedin}}
     >
       {children}
     </Context.Provider>

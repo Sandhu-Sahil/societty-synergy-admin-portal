@@ -1,11 +1,14 @@
 'use client';
-import React, { useEffect, useState } from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
+import React, { useContext, useEffect, useState } from "react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import Context from "@/ContextAPI";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [loggedin, setloggedin] = useState(false)
+  const context = useContext(Context);
+  const {loggedin,setloggedin} = context;
   let router = useRouter();
   useEffect(() => {
     if (localStorage.getItem('synergy-token')) {
@@ -30,6 +33,7 @@ export default function App() {
     //     body: JSON.stringify({ token })
     //   }
     // )
+    setloggedin(false);
     router.push('/login')
   }
 
@@ -47,43 +51,61 @@ export default function App() {
 
       <NavbarContent className="hidden sm:flex gap-x-14" justify="center">
         <NavbarItem>
-          <Link className="text-text-col active:text-primary-col hover:text-primary-col" href="#">
+          <Link className="text-text-col active:text-primary-col hover:text-primary-col" href="/">
             Overview
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className="text-text-col active:text-primary-col hover:text-primary-col" href="#" >
+          <Link className="text-text-col active:text-primary-col hover:text-primary-col" href="/events" >
             Events
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link className="text-text-col active:text-primary-col hover:text-primary-col" href="#">
+          <Link className="text-text-col active:text-primary-col hover:text-primary-col" href="/members">
             Members
           </Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          {loggedin && <Button onClick={() => { handleLogout() }} as={Link} className="text-primary-col bg-bg1-col" href="#" variant="flat">
+          {loggedin && <Button onClick={() => { handleLogout() }} className="text-red-500 bg-bg1-col sm:flex hidden" variant="flat">
             Log Out
           </Button>}
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu className="bg-bg1-col/90 overflow-hidden">
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              className="text-text-col active:text-primary-col hover:text-primary-col"
-              href="#"
-              size="lg"
-            >
-              {item}
-            </Link>
-          </NavbarMenuItem>
-        ))}
-        <Button as={Link} onClick={() => { handleLogout() }} className="text-red-500 bg-bg2-col w-10 ml-[-1%]" size="lg" href="#" variant="flat">
+        <NavbarMenuItem>
+          <Link
+            className="text-text-col active:text-primary-col hover:text-primary-col"
+            href="/"
+            size="lg"
+          >
+            Overview
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem>
+
+          <Link
+            className="text-text-col active:text-primary-col hover:text-primary-col"
+            href="/events"
+            size="lg"
+          >
+            Events
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem>
+
+          <Link
+            className="text-text-col active:text-primary-col hover:text-primary-col"
+            href="/members"
+            size="lg"
+          >
+            Members
+          </Link>
+        </NavbarMenuItem>
+        {loggedin && <Button onClick={() => { handleLogout() }} className="text-red-500 bg-bg2-col w-10 ml-[-1%]" size="lg" variant="flat">
           Log Out
-        </Button>
+        </Button>}
       </NavbarMenu>
     </Navbar>
   );

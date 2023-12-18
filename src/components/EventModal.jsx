@@ -12,7 +12,7 @@ export default function Modal(props) {
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div className="mt-4 flex flex-col bg-bg2-col rounded-lg p-4 shadow-sm">
-                <h2 className="text-primary-col font-bold text-lg">Edit Event</h2>
+                <h2 className="text-primary-col font-bold text-lg">{props.type} Event</h2>
 
                 <div className="mt-4">
                   <label className="text-white" htmlFor="name">
@@ -125,16 +125,27 @@ export default function Modal(props) {
                   >
                     cancel
                   </button>
-                  <button
+                  {props.type == 'Edit' ? <button
                     className="bg-primary-col text-bg1-col rounded-md px-4 py-1 hover:bg-blue-500 hover:text-white transition-all duration-200"
                     type="submit"
                     onClick={() => {
-                        props.updateEvent();
+                      props.updateEvent();
                       props.setShowModal(false);
                     }}
                   >
-                    Submit
-                  </button>
+                    Update
+                  </button> :
+                    <button
+                      className="bg-primary-col text-bg1-col rounded-md px-4 py-1 hover:bg-blue-500 hover:text-white transition-all duration-200"
+                      type="submit"
+                      onClick={() => {
+                        props.AddEvent();
+                        props.setShowModal(false);
+                      }}
+                    >
+                      Add
+                    </button>
+                  }
                 </div>
               </div>
             </div>
