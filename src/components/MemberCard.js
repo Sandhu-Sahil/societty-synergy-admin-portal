@@ -2,42 +2,54 @@
 "use client";
 import React,{useContext} from "react";
 import Context from "../ContextAPI";
-const MemberCard = ({ member,setmod }) => {
+const MemberCard = ({ member,setmod,setviewer }) => {
   const context=useContext(Context);
-  const { id, photo, name, role, instagram, github } = member;
+  const { clubID, id, name, role, instagram, github,linkedin } = member;
   return (
-    <div className="flex justify-center items-center ">
-  <div className="bg-900 w-80 shadow-md rounded-md my-2 p-4 bg-primary-col">
-    
-    <div className="text-center">
-      <div className="text-xl font-extrabold mb-1 text-text-col">{name}</div>
-      <div className="text-text-col mb-2 text-bold">{role}</div>
-      <div className="flex justify-center space-x-4 my-4">
-        {id!==-1 && <button className="bg-red-900 text-white rounded-lg px-4 py-2 font-bold"
-        onClick={()=>{
-          var arr=[];
-          var i;
-          for(i in context.members){
-            if(context.members[i].id!=member.id){
-              arr.push(context.members[i]);
-            }
-          }
-          context.setmembers(arr);
-        }}>
-          Remove
-        </button>}
-        <button className="bg-green-900 text-white rounded-lg px-4 py-2 font-bold" onClick={()=>
-        {
-          context.setcurrentmem(member);
-          setmod(true);
-        }}>
-          Edit Details
-        </button>
+    <div className="flex-row md:flex justify-between mx-16 bg-bg2-col shadow-lg rounded-md p-2 space-y-2 md:space-y-0">
+      <div className="flex space-x-8">
+
+      <div className="text-xl text-text-col font-bold ml-2">{name}</div>
+      {(id === context.head.id || id===context.faculty.id) && (
+            <div className="text-xl text-text-col ml-2">{`(${role})`}</div>
+          )}
+      </div>
+      <div className=" space-x-4 mx-4">
+      <button
+            className="bg-blue-800 text-white rounded-lg px-2 py-1 font-bold"
+            onClick={() => {
+              context.setcurrentmem(member);
+              setviewer(1)
+              setmod(true);
+            }}
+          >
+            View
+            </button>
+      <button
+            className="bg-green-900 text-white rounded-lg px-2 py-1 font-bold"
+            onClick={() => {
+              context.setcurrentmem(member);
+              setviewer(0);
+              setmod(true);
+            }}
+          >
+            Edit
+            </button>
+          
+          {(id !== context.head.id && id!==context.faculty.id) && (
+            <button
+              className="bg-red-900 text-white rounded-lg px-2 py-1 font-bold"
+              onClick={() => {
+                const updatedMembers = context.members.filter((m) => m.id !== member.id);
+                context.setmembers(updatedMembers);
+              }}  
+            >
+              Remove
+            </button>
+          )}
       </div>
     </div>
-  </div>
-</div>
-
+  
   );
 };
 
