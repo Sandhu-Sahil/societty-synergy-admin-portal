@@ -84,7 +84,7 @@ const EventCard = (props) => {
           </div>
         </div>
         <div className="p-6 pt-0">
-          <button
+          {props.sup!==1 && <button
             data-ripple-light="true"
             type="button"
             onClick={() => {
@@ -95,7 +95,7 @@ const EventCard = (props) => {
             className="bg-primary-col rounded-lg bg-blue-500 py-3 px-6 text-center align-middle text-xs text-bg2-col"
           >
             Edit
-          </button>
+          </button>}
         </div>
       </div>
     </div>

@@ -1,12 +1,66 @@
-'use client';
+"use client";
 import { useState } from "react";
 import Context from "./ContextAPI";
 // import axios from "axios";
 const Synergy = ({ children }) => {
+  const recentEvents = [
+    {
+      Name: "inovayte 2.0",
+      Description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eius.",
+      clubId: "gdsc",
+      ID: "1",
+      StartDate: "2024-01-04",
+      EndDate: "2024-01-04",
+      EventTime: "08:50",
+      Location: "lt-2",
+      RSVPDeadline: "2024-01-04T00:48",
+      img: "/composeabc.webp",
+    },
+    {
+      Name: "bitbox",
+      Description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eius.",
+      clubId: "gdsc",
+      ID: "2",
+      StartDate: "2024-01-04",
+      EndDate: "2024-01-04",
+      EventTime: "08:50",
+      Location: "lt-2",
+      RSVPDeadline: "2024-01-04T00:48",
+      img: "/composeabc.webp",
+    },
+    {
+      Name: "bitbox",
+      Description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eius.",
+      clubId: "gdsc",
+      ID: "3",
+      StartDate: "2024-01-04",
+      EndDate: "2024-01-04",
+      EventTime: "08:50",
+      Location: "lt-2",
+      RSVPDeadline: "2024-01-04T00:48",
+      img: "/composeabc.webp",
+    },
+    {
+      Name: "bitbox",
+      Description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, eius.",
+      clubId: "gdsc",
+      ID: "4",
+      StartDate: "2024-01-04",
+      EndDate: "2024-01-04",
+      EventTime: "08:50",
+      Location: "lt-2",
+      RSVPDeadline: "2024-01-04T00:48",
+      img: "/composeabc.webp",
+    },
+  ];
   const [faculty, setfaculty] = useState({
     id: -123232,
     linkedin: "url-to-linkedin",
-    name: "John Doe",
+    name: "Shkha Mehta",
     role: "Faculty Head",
     instagram: "https://www.instagram.com/johndoe/",
     github: "https://github.com/johndoe",
@@ -14,7 +68,7 @@ const Synergy = ({ children }) => {
   const [head, sethead] = useState({
     id: -323231,
     linkedin: "url-to-linkedin",
-    name: "John Doe",
+    name: "Sahilsher Singh",
     role: "Society Head",
     instagram: "https://www.instagram.com/johndoe/",
     github: "https://github.com/johndoe",
@@ -62,7 +116,8 @@ const Synergy = ({ children }) => {
       role: "Product Manager",
       linkedin: "https://www.linkedin.com/in/fionadavis/",
       github: "https://github.com/fionadavis",
-    },{
+    },
+    {
       id: 7,
       name: "George Turner",
       role: "Backend Developer",
@@ -159,7 +214,8 @@ const Synergy = ({ children }) => {
       role: "Machine Learning Engineer",
       linkedin: "https://www.linkedin.com/in/trevormartinez/",
       github: "https://github.com/trevormartinez",
-    },{
+    },
+    {
       id: 21,
       name: "Uma Patel",
       role: "UX/UI Designer",
@@ -201,17 +257,34 @@ const Synergy = ({ children }) => {
       linkedin: "https://www.linkedin.com/in/zaneadams/",
       github: "https://github.com/zaneadams",
     },
-    
   ]);
-  
+
   const [currentmem, setcurrentmem] = useState({});
   const [email, setemail] = useState("");
   const [pass, setpass] = useState("");
   const [show, setshow] = useState(false);
-  const [loggedin, setloggedin] = useState(true)
+  const [loggedin, setloggedin] = useState(true);
   return (
     <Context.Provider
-      value={{ faculty, head, members, setfaculty, sethead, setmembers ,currentmem,setcurrentmem,email,setemail,pass,setpass,show,setshow,loggedin,setloggedin}}
+      value={{
+        faculty,
+        head,
+        members,
+        setfaculty,
+        sethead,
+        setmembers,
+        currentmem,
+        setcurrentmem,
+        email,
+        setemail,
+        pass,
+        setpass,
+        show,
+        setshow,
+        loggedin,
+        setloggedin,
+        recentEvents,
+      }}
     >
       {children}
     </Context.Provider>
