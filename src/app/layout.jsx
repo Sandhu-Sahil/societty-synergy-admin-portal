@@ -1,26 +1,27 @@
-import Synergy from '@/Data'
-import '@/styles/globals.css'
-import { Providers } from './provider'
-import TopBar from '@/components/TopBar'
+import Synergy from "@/Data";
+import "@/styles/globals.css";
+import { Providers } from "./provider";
+import TopBar from "@/components/TopBar";
+import Navbars from "@/components/Navbars";
 
-const RootLayout = ({children}) => {
+const RootLayout = ({ children }) => {
   return (
-    <html lang='en'>
-        <body>
+    <html lang="en">
+      <body>
         <Synergy>
           <Providers>
-            <TopBar/>
             <div className="main">
-                <div className="gradient"/>
+              <div className="gradient" />
             </div>
             <main className="app ">
-                {children}
+              <Navbars children={children}/>
             </main>
-            </Providers>
-            </Synergy>
-        </body>
+          </Providers>
+        </Synergy>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+      </body>
     </html>
-  )
-}
+  );
+};
 
-export default RootLayout
+export default RootLayout;

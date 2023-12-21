@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Context from "@/ContextAPI";
 
+
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const context = useContext(Context);
