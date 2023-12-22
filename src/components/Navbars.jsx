@@ -1,7 +1,9 @@
 
 
-
+import Context from "@/ContextAPI"
+import { useContext } from "react"
 const Navbars = ({ children }) => {
+    const context=useContext(Context);
     return (
         <>
             <nav className="fixed flex top-0 z-50 w-full bg-bg2-col border-b border-text-col dark:bg-text-col dark:border-text-col">
@@ -65,7 +67,7 @@ const Navbars = ({ children }) => {
                                         <span className="sr-only">Open user menu</span>
                                         <img
                                             className="w-8 h-8 rounded-full"
-                                            src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                                            src={context.dept.club.logoUrl}
                                             alt="user photo"
                                         />
                                     </button>
@@ -146,7 +148,7 @@ const Navbars = ({ children }) => {
 
                         <li>
                             <a
-                                href="#"
+                                href="/"
                                 className="flex items-center p-2 text-text-col rounded-lg dark:text-bg2-col hover:bg-text-col dark:hover:bg-text-col group"
                             >
                                 <svg
@@ -183,7 +185,7 @@ const Navbars = ({ children }) => {
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href="/events"
                                 className="flex items-center p-2 text-text-col rounded-lg dark:text-bg2-col hover:bg-text-col dark:hover:bg-text-col group"
                             >
                                 <svg
@@ -202,7 +204,7 @@ const Navbars = ({ children }) => {
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href="/members"
                                 className="flex items-center p-2 text-text-col rounded-lg dark:text-bg2-col hover:bg-text-col dark:hover:bg-text-col group"
                             >
                                 <svg

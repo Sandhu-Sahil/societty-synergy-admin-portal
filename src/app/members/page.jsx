@@ -15,7 +15,7 @@ function MemberMgmt() {
   }, []);
 
   const context = useContext(Context);
-  const { members } = context;
+  const { members } = context.dept;
   const [modaler, setmodaler] = useState(false);
   const [pageno, setpageno] = useState(1);
   const [viewer, setviewer] = useState(0);

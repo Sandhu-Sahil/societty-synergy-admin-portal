@@ -4,7 +4,7 @@ import EventCard from "./EventCard";
 import Context from "@/ContextAPI";
 const SocietyOverview = () => {
   const context=useContext(Context);
-  
+  const {name,description,linkedin,instagram,github,website}=context.dept.club;
   const societyDetails = {
     name: "GDSC",
     description:
@@ -15,7 +15,7 @@ const SocietyOverview = () => {
   return (
     <div className="mx-16  mt-8 text-text-col space-y-8 flex-row justify-center p-8">
       <h1 className="text-4xl font-bold mb-4">
-        {societyDetails.name} Overview
+        {name} Overview
       </h1>
       
       <div>
@@ -30,7 +30,7 @@ const SocietyOverview = () => {
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Society Description</h2>
         <div className="flex justify-center text-center px-16">
-          <div className="font-semibold">{societyDetails.description}</div>
+          <div className="font-semibold">{description}</div>
         </div>
       </div>
 
@@ -59,6 +59,12 @@ const SocietyOverview = () => {
               </div>
             );
           })}
+        </div>
+      </div>
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold mb-4">Social Media Handles</h2>
+        <div className="flex space-x-8 justify-center">
+        Linkedin, Github ,Instagram, Website, Facebook {linkedin},{instagram},{github},{website}
         </div>
       </div>
     </div>
